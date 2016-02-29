@@ -1,0 +1,6 @@
+<p>Total: {{ tvshows|length }}</p>
+<ol>
+{% for tv in tvshows %}
+<li>{{ tv.name }} {{ tv.douban_rating }}  {{ tv.updated_at|date:"Y-m-d" }}</li>
+{% endfor %}
+</ol>

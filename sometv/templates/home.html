@@ -1,0 +1,51 @@
+
+{% load staticfiles %}
+{% load get_at_index %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="{% static "/s/materialize-src/sass/materialize.css" %}">
+  <title>Sometv</title>
+  <style>
+  body{font:12px/18px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% for tvshow in tvshows %}
+      {% if not forloop.counter|divisibleby:"2" %}
+        <div class="row">
+          <div class="col s6 l6">
+            <div class="card small" >
+              <div class="card-image">
+                <img src="/media/{{ tvshow.douban_cover }}">
+              </div>
+              <div class="card-content">
+                  <a href="{{ tvshow.douban_url }}" target="_blank" class="activator grey-text text-darken-4">{{ tvshow.name }} · {{ tvshow.douban_rating }}</a>
+                  <p class="grey-text text-lighten-1">{{ tvshow.release_at|date:"Y-m-d" }} 上映</p>
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter < tvshows|length %}
+          {% with tvshow_=tvshows|get_at_index:forloop.counter %}
+          <div class="col s6 l6">
+            <div class="card small">
+              <div class="card-image">
+                <img src="/media/{{ tvshow_.douban_cover }}">
+              </div>
+              <div class="card-content">
+                  <a href="{{ tvshow_.douban_url }}" target="_blank" class="activator grey-text text-darken-4">{{ tvshow_.name }} · {{ tvshow_.douban_rating }}</a>
+                  <p class="grey-text text-lighten-1">{{ tvshow_.release_at|date:"Y-m-d" }} 上映</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endwith %}
+          {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</body>
+</html>
