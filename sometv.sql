@@ -111,7 +111,7 @@ INSERT INTO `dynamic_scraper_scraperelem` VALUES (8,'//span[@property=`v:initial
 
 INSERT INTO `dynamic_scraper_scraper` VALUES (1,'Douban US TV Show Scraper','A',NULL,NULL,'N',0,'','','',1,NULL,'2016-03-02 09:52:50.568379','','2015-12-16 03:31:11','2015-12-16 03:31:16','');
 
-CREATE TABLE `dynamic_scraper_scrapedobjattr` (`id` integer NOT NULL PRIMARY KEY AUTOINCREMENT, `name` varchar(200) NOT NULL, `attr_type` varchar(1) NOT NULL, `obj_class_id` integer NOT NULL REFERENCES `dynamic_scraper_scrapedobjclass` (`id`), `id_field` bool NOT NULL, `save_to_db` bool NOT NULL);
+
 INSERT INTO `dynamic_scraper_scrapedobjattr` VALUES (1,'base','B',1,0,1);
 INSERT INTO `dynamic_scraper_scrapedobjattr` VALUES (2,'name','S',1,0,1);
 INSERT INTO `dynamic_scraper_scrapedobjattr` VALUES (3,'douban_id','S',1,0,1);
