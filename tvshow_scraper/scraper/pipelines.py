@@ -7,10 +7,6 @@ from dynamic_scraper.models import SchedulerRuntime
 from tvshow_scraper.models import TVShow
 from django.forms.models import model_to_dict
 
-from leancloud import Object, Query
-
-
-
 def item_to_model(item):
     model_class = getattr(item, 'django_model')
     if not model_class:
@@ -76,6 +72,7 @@ class DjangoWriterPipeline(object):
             
             if created:
                 spider.log('==' + model.name + '== created.', log.INFO)
+                
             else:
                 spider.log('==' + model.name + '== updated.', log.INFO)
 
